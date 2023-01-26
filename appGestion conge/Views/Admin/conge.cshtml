@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "conge";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+@model  List<appGestion_conge.Models.conge>
+<style>
+    .btn1 {
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn2 {
+        /* Green */
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+        table td, table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+</style>
+<h2 style="  margin-top: 0; background-color: rgb(235, 235, 235); border-bottom: 2px solid rgb(202, 202, 202);font-weight:400; width: 100%; height: 40px; " > Listes demmandes  </h2>
+
+@using (Html.BeginForm("conge", "admin", FormMethod.Post))
+{
+    <input type="text" name="keywords" />
+
+    <button type="submit" style="background-color: white; cursor: pointer; border: none;"><i class="fa-solid fa-magnifying-glass"></i>  </button>
+}
+
+
+@if (ViewBag.keywords != null)
+{
+    <div>
+        <b> vos résultats de cette recherche :  </b>  <h4 style="display:inline-block; background-color:blue;color:white; ">  @ViewBag.keywords</h4>
+    </div>
+}
+
+
+<table>
+    <tr>
+        <th>nom</th>
+        <th>prenom</th>
+        <th>Durée</th>
+        <th>Date début</th>
+        <th>Date Fin</th>
+        <th>Motif</th>
+        <th>Etat</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @item.employer.nom</td>
+            <td>@item.employer.prenom </td>
+            <td>@item.duree</td>
+            <td>@item.date_debut</td>
+            <td>@item.date_fin</td>
+            <td>@item.motif</td>
+            <td>@item.etat</td>
+            <td>
+                <a class="btn2" style="background-color:green" href="/admin/accepterconge/@item.noconge"><i class="fa-solid fa-check"></i> accepter </a>
+                <a class="btn2" style="background-color:red" href="/admin/refuserconge/@item.noconge"><i class="fa-solid fa-circle-xmark"></i> refuser </a>
+
+                @*<button class="btn btnaccepter" style="background-color: green ;color :white;"> @Html.ActionLink("accepter", "congeaccepter", new { id = item.noconge }); </button>
+                    <button class="btn btnrefuser" style="background-color:red;color:white "> @Html.ActionLink("refuser", "congerefuser", new { id = item.noconge }) </button>*@
+            </td>
+        </tr>
+
+    }
+    @if (ViewBag.refuser != null)
+    {
+
+        <script>
+            window.onload = function () {
+                alert("@ViewBag.refuser");
+            }
+
+        </script>
+
+    }
+    @if (ViewBag.accepter != null)
+    {
+
+        <script>
+        window.onload = function () {
+            alert("@ViewBag.accepter");
+        }
+        </script>
+
+    }
+</table>

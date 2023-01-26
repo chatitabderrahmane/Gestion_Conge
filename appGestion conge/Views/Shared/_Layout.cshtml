@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0%;
+            padding: 0%;
+        }
+        nav i{padding-right:10px;}
+        * {
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #brand {
+            padding: 5px;
+            font-size: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        header h1 {
+                font-size: 20px;
+                padding: 5px;
+                text-align: center;
+         }
+
+        nav h1 {
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        span {
+            color: green;
+        }
+
+        nav .profile-desc {
+            display: flex;
+        }
+
+        nav .picture {
+            
+            background-image: url('../../Content/images/employe.jpg');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border: 2px solid white;
+            border-radius: 50%;
+        }
+
+        nav .active {
+            pointer-events: none;
+        }
+
+        nav div:hover {
+            background-color: #313c45;
+        }
+    </style>
+
+    <header style="z-index:2; position:fixed; background-color: rgba(0, 0, 255, 0.867); width: 100%;  height: 50px;">
+
+         <div id="brand"> <a style="font-size:25px" href="/">IMS Technology | Dashboard </a></div>
+         <div style="display:flex;justify-content:space-between; " >
+             <div  id="notif" onclick="javascript:notiffunction()">
+                 <a href="#"><i style="font-size:25px;" class="fas fa-bell"> </i> </a>
+                 <div></div>
+                 <h3 class="anotif">vous avez  @Html.ViewBag.motif demande non lues   </h3>
+             </div>
+             <h1> <a href="/"> <i style="color:red; " class='fas fa-sign-out-alt'></i> Quiter </a>  </h1>
+
+         </div>
+
+    </header>
+    <div class="content" style="display: flex;">
+        <nav style=" background-color: #1C242B; height: 100vh; position: fixed; width: 300px; ">
+            <h1 style="margin-bottom:55px;">g</h1>
+            <div class="profile-desc active">
+                <div class="picture">
+
+                </div>
+                <div style="margin-left: 20px;">
+                    <b style="color:white;"> Mohamed kalkoul</b> <br>
+                    <span>Online</span>
+                </div>
+
+            </div>
+            <hr>
+            <div class="active " style="background-color: #313c45;">
+                <h1><a href=""> <i class="fa-solid fa-house"></i> Dashboard  </a> </h1>
+            </div>
+            <div>
+                <h1><a href="/admin/employe"><i class="fa-solid fa-users"></i> Employé  </a> </h1>
+            </div>
+            <div>
+                <h1><a href="/admin/conge"> <i class="fa-solid fa-list-ul"></i> list demmande  </a> </h1>
+            </div>
+            <div>
+                <h1><a href="/admin/congeaccepter"><i style="color:green;" class="fa-solid fa-circle-check"></i>demmande accepter  </a> </h1>
+            </div>
+            <div>
+                <h1><a href="/admin/congerefuser"><i style="color:red;" class="fa-solid fa-circle-xmark"></i>demmande refuser  </a> </h1>
+            </div>
+        </nav>
+        <section style="border-top: 10px rgb(235, 235, 235) solid;border: 10px solid rgb(235, 235, 235);border-bottom:none;  margin-left: 300px; margin-top: 50px; ">
+            
+            
+            @RenderBody()
+             
+        </section>
+
+
+    </div>
+    <style>
+
+        #notif {
+            position: relative;
+            top:20px;
+            margin-right:60px;
+           
+        }
+
+            #notif h3 {
+                position: absolute;
+                background-color: green;
+                height: 50px;
+                font-size:18px;
+                top: 0%;
+                right:20px;
+                width: 300px;
+                text-align: center;
+                color: white;
+            }
+
+            #notif div {
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background-color: red;
+                bottom: 100%;
+                right: 2.5px;
+                border-radius: 50%;
+            }
+
+        .anotif {
+            display: none;
+        }
+
+        .anotif2 {
+            display: block;
+        }
+    </style>
+    <!--      scripts   -->
+    <script>
+        var mynotif = document.getElementById("notif");
+        var myanotif = document.querySelector(".anotif");
+        function notiffunction() {
+            myanotif.classList.toggle("anotif2");
+        }
+        var a = document.querySelector("#notif div");
+
+        if (@ViewBag.motif > 0){
+            a.style.display = "block";
+        }
+        else
+            a.style.display = "none";
+
+    </script>
+</body>
+</html>

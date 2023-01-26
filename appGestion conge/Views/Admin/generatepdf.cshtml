@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "generatepdf";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    #DivToPrint {
+        width: 90%;
+        margin: auto;
+    }
+
+    .btn1 {
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: blue;
+    }
+
+    .btn2 {
+        /* Green */
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+        table td, table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+</style>
+
+@model  appGestion_conge.Models.conge
+<section id="DivToPrint">
+   <h2 style="background-color: blue;">Conge details</h2>
+    <hr />
+    <b>@Model.employer.nom   @Model.employer.prenom  </b>
+    <br />
+    <b>@Model.employer.email </b>
+    <br />
+    <br />
+
+    <b>Mr mohamed kalkoul </b>
+    <br>
+    <b>mohamedkalkoul45@gmail.com</b>
+    <br />
+   <p style="float:right;">Conge code : @Model.noconge </p>
+    <br />
+    <br />
+    <p>Bonjour <b>  @Model.employer.nom  @Model.employer.prenom  </b>  Félicitation votre demande a été  <u style="color:greenyellow"> "accepté" </u> <br /> le @DateTime.Now.Date </p>
+    <table class="table" border="1px" style="width:80%; margin:auto;text-align:center; ">
+        <tr>
+
+            <th>Durée</th>
+            <th>Date début</th>
+            <th>Date Fin</th>
+            <th>Motif</th>
+            <th>état</th>
+        </tr>
+        <tr>
+            <td>@Model.duree</td>
+            <td>@Model.date_debut</td>
+            <td>@Model.date_fin</td>
+            <td>@Model.motif</td>
+            <td style="color:green;">@Model.etat</td>
+        </tr>
+    </table>
+    <br />
+
+    <br />
+
+    <h4 style="margin-left:60%;"> signature </h4>
+</section>
+    <button class="btn1" onclick=" javascript:print1()"> <i class="fa-solid fa-download"></i> download pdf </button> 
+
+<script>
+    function print1() {
+        var restorepage = document.getElementById("DivToPrint").innerHTML;
+        document.body.innerHTML = restorepage;
+        window.print();
+    }
+    
+</script>
+    

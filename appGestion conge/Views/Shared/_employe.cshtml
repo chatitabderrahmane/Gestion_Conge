@@ -1,0 +1,165 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        i{
+            color : white;
+        }
+        body {
+            margin: 0%;
+            padding: 0%;
+        }
+
+     
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        #brand {
+            padding: 5px;
+            font-size: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+            header h1 {
+                font-size: 20px;
+                padding: 5px;
+                text-align: center;
+            }
+
+        nav h1 {
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        span {
+            color: green;
+        }
+
+        nav .profile-desc {
+            display: flex;
+        }
+
+        nav .picture {
+            cursor: pointer;
+            background-image: url('../../Content/images/employe.jpg');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border: 2px solid white;
+            border-radius: 50%;
+        }
+
+        nav .active {
+            pointer-events: none;
+        }
+
+        nav .hover:hover {
+            background-color: #313c45;
+        }
+        .boldsp {
+            font-weight: bold;
+            color: green;
+        }
+
+        .picture {
+            position: relative;
+            color: black;
+        }
+
+        #pop-upprofile {
+            background-color: white;
+            padding: 20px;
+            border: 1px black solid;
+            border-radius: 10px;
+            position: absolute;
+            top: 100%;
+            display: none;
+        }
+
+        .pop-upprofile1#pop-upprofile {
+            display: block;
+        }
+    </style>
+
+    <header style="z-index:2; position:fixed; background-color: rgba(0, 0, 255, 0.867); width: 100%;  height: 50px;">
+
+        <div id="brand"> <a href="/">IMS Technology | User </a></div>
+
+        <h1> <a href="/ ">  <i style="color:red" class="fa-solid fa-arrow-right-from-bracket"></i> Quiter </a>  </h1>
+
+    </header>
+    <div class="content" style="display: flex;">
+        <nav style=" background-color: #1C242B; height: 100vh; position: fixed; width: 300px; ">
+            <h1 style="margin-bottom:55px;">g</h1>
+            <div class="profile-desc" >
+                <div class="picture"style="cursor:pointer;"    onclick="javascript:profile()">
+                    <div  id="pop-upprofile"   >
+                        <h4><span class="boldsp">Nom complet : </span> @Session["nom"]  </h4>
+                        <h4><span class="boldsp">Email : </span>  @Session["E-mail"]  </h4>
+                        <h4><span class="boldsp">Grade : </span>  @Session["grade"]  </h4>
+                        <h4><span class="boldsp">telephone : </span>  @Session["telephone"]  </h4>
+                    </div>
+                </div>
+                <div style="margin-left: 20px;">
+                    <b style="color:white;"> @Session["nom"]</b> <br>
+                    <b style="color: rgba(255, 255, 255, 0.634);"> @Session["grade"]</b> <br>
+                    <span style="color:green">Online</span>
+
+                </div>
+
+            </div>
+            <hr>
+            <div    style="background-color: #313c45;">
+                <h1><a href=""> <i style="color:yellow" class="fa-solid fa-face-smile"></i> Bonjour  </a> </h1>
+            </div>
+            <div class="hover">
+                <h1><a href="/employe/Index"><i style="color:#28A8E9;" padding-right:10px;" class="fa-solid fa-paper-plane"></i>  envoyer demmande  </a> </h1>
+            </div>
+            <div class="hover">
+                <h1><a href="/employe/mesdemmandes"><i style="padding-right:10px;" class="fa-solid fa-list-ul"></i> mes demmandes </a> </h1>
+            </div>
+
+        </nav>
+        <section style="margin-left: 300px; border-top: 10px rgb(235, 235, 235) solid; border: 10px solid rgb(235, 235, 235); border-bottom: none; margin-left: 300px; margin-top: 50px;">
+            
+            @RenderBody();
+
+        </section>
+
+
+    </div>
+
+    <!--      scripts   -->
+    <script>
+        var popupprofile = document.querySelector("#pop-upprofile");
+
+        function profile(){
+            popupprofile.classList.toggle("pop-upprofile1")
+        }
+    </script>
+</body>
+</html>

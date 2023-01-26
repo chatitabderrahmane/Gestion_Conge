@@ -1,0 +1,103 @@
+﻿@model appGestion_conge.Models.employer
+
+@{
+    ViewBag.Title = "modifieremploye";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-top: 0; background-color: rgb(235, 235, 235); border-bottom: 2px solid rgb(202, 202, 202);font-weight:400; width: 100%; height: 40px; " >Modifier employe</h2 >
+<style>
+    .form {
+        width: 80%;
+        margin: auto;
+    }
+    input[type=text] {
+        width: 400px;
+        outline:none;
+        padding:20px 50px;
+         border:none;
+        border-bottom:green solid 2px;
+         font-size:20px;
+         font-family:'Agency FB';
+        height: 30px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+    label{
+        font-size:25px;
+        font-weight:normal;
+    }
+    input {
+        width: 500px;
+        height: 30px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+        input:focus {
+            box-shadow: 0 0 2pt 1pt green;
+            outline-width: 0px;
+        }
+
+        input[type=button], input[type=submit], input[type=reset] {
+            background-color: #04AA6D;
+            border: none;
+            width: 120px;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+</style>
+@using (Html.BeginForm("modifieremploye", "admin", FormMethod.Post))
+{
+ <div class="form">
+
+
+    <input type="hidden" value="@Model.noemployer" name="noemployer" />
+
+    <label>Nom : </label>
+
+    <input type="text" value="@Model.nom" name="nom" /><br />
+
+    <label>prenom : </label>
+
+    <input type="text" value="@Model.prenom" name="prenom" /><br />
+
+    <label>datenaissance : </label>
+
+    <input type="text" value="@Model.datenaissance" name="datenaissance" /><br />
+    <br />
+
+    <label>grade : </label>
+
+
+    <input type="text" value="@Model.grade" name="grade" /><br />
+
+    <label> telephone : </label>
+
+    <input type="text" value="@Model.telephone" name="telephone" /><br />
+
+    <label> email : </label>
+
+    <input type="text" value="@Model.email" name="email" /><br />
+
+    <label> username : </label>
+
+    <input type="text" value="@Model.username" name="username" /><br />
+
+    <label> Mot de passe : </label>
+
+    <input type="text" value="@Model.motdepasse" name="motdepasse" /><br />
+
+
+
+
+    
+    <button type="submit" class="btn1" style="background-color:blue; color:white;" margin-left:50px;"><i class="fas fa-edit"></i>Enrigistrer</button>
+</div>}
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

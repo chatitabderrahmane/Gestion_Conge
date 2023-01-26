@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gestion_congeModelStoreContainer" CdmEntityContainer="gestion_congeEntities">
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="gestion_congeModel.admin">
+        <MappingFragment StoreEntitySet="admin">
+          <ScalarProperty Name="Noadmin" ColumnName="Noadmin" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="passe" ColumnName="passe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="conges">
+      <EntityTypeMapping TypeName="gestion_congeModel.conge">
+        <MappingFragment StoreEntitySet="conge">
+          <ScalarProperty Name="noemployer" ColumnName="noemployer" />
+          <ScalarProperty Name="noconge" ColumnName="noconge" />
+          <ScalarProperty Name="duree" ColumnName="duree" />
+          <ScalarProperty Name="date_debut" ColumnName="date_debut" />
+          <ScalarProperty Name="date_fin" ColumnName="date_fin" />
+          <ScalarProperty Name="motif" ColumnName="motif" />
+          <ScalarProperty Name="etat" ColumnName="etat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employers">
+      <EntityTypeMapping TypeName="gestion_congeModel.employer">
+        <MappingFragment StoreEntitySet="employer">
+          <ScalarProperty Name="noemployer" ColumnName="noemployer" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="datenaissance" ColumnName="datenaissance" />
+          <ScalarProperty Name="grade" ColumnName="grade" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="motdepasse" ColumnName="motdepasse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

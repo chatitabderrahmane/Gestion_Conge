@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+
+@model  List<appGestion_conge.Models.admin>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/assets/loginadmin.css" rel="stylesheet" />
+    <link href="~/Content/assets/loginadmin.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <div class="content">
+        <div class="content-picture">
+            <img src="~/Content/images/adminpanelpicture.jpg" alt="background">
+        </div>
+
+        <div class="admin">
+            <form action="">
+                <h1>Admin panel <br> <ion-icon style="font-size: 50px; color: rgb(255, 255, 255);" name="contact"></ion-icon> </h1>
+                <label for="">username : </label> <br>
+                <input type="text" name="username" required placeholder="username here"><br><br>
+                <label for=""> mot de passe :</label> <br>
+                <input type="password" required name="password" placeholder="mot de passe"><br>
+                <input type="submit" title="Entrer">
+            </form>
+        </div>
+    </div>
+    <!-- script -->
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+
+</body>
+</html>
+

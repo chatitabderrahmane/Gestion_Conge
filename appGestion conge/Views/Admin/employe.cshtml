@@ -1,0 +1,140 @@
+﻿<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+@{
+    ViewBag.Title = "employe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    .btn1 {
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn2 {
+        /* Green */
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 80%;
+        margin: auto;
+        text-align: center;
+    }
+
+        table td, table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+
+    input[type=text] {
+        width: 500px;
+        height: 30px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+    input {
+        width: 500px;
+        height: 30px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+        input:focus {
+            box-shadow: 0 0 2pt 2pt green;
+            outline-width: 0px;
+        }
+
+        input[type=button], input[type=submit], input[type=reset] {
+            background-color: #04AA6D;
+            border: none;
+            width: 120px;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+</style>
+@model  List<appGestion_conge.Models.employer>
+<h2 style="margin-top: 0; background-color: rgb(235, 235, 235); border-bottom: 2px solid rgb(202, 202, 202);font-weight:400; width: 100%; height: 40px; ">Employe</h2>
+
+@using (Html.BeginForm("ajouteremploye", "admin"))
+{
+    <input type="text" name="nom" placeholder="nom" />
+    <input type="text" name="prenom" placeholder="prenom" />
+    <input type="date" name="datenaissance" placeholder="datenaissance" />
+    <input type="text" name="grade" placeholder="grade" />
+    <input type="text" name="telephone" placeholder="telephone" />
+    <input type="text" name="email" placeholder="email" />
+    <input type="text" name="username" placeholder="username" />
+    <input type="text" name="motdepasse" placeholder="password" />
+    <br />
+    <button type="submit" class="btn1" style=" background-color: blue;"><i class="fas fa-user-plus"></i>  ajouter</button>
+
+}
+
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date Naissance</th>
+        <th>Grade</th>
+        <th>Telephone</th>
+        @*  <th>emil</th>
+        <th>login</th>
+          <th>mot de passe</th>*@
+        <th>actions</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+             <td>@item.nom</td>
+            <td>@item.prenom</td>
+            <td>@item.datenaissance</td>
+            <td>@item.grade</td>
+            <td>@item.telephone</td>
+            
+            <td>
+                <a class="btn2" href="/Admin/supprimeremploye/@item.noemployer" style="background-color:red;"> <i class="fa-solid fa-trash"></i> Supprimer </a>
+                <a class="btn2" href="/Admin/modifieremploye/@item.noemployer" style="background-color:blue;"><i class="fa-solid fa-circle-info"></i> Details </a>
+            </td>
+        </tr>
+    }
+</table>
+

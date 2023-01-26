@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/assets/navbar.css" rel="stylesheet" />
+ 
+    <link href="~/Content/assets/home.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&family=Oswald:wght@600&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <title>Gestion congé</title>
+
+</head>
+
+<body>
+    <style>
+        .hommeimage img{
+            background-image:cover;
+            width:100%;
+            height:80vh;
+        }
+    </style>
+
+    <header style="position: relative; z-index: 700;">
+        <div id="brand"><a href="/">IMS-Technology</a></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Homme</a></li>
+                <li><a href="#presentation-contact1">about</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li id="login">  <a  href="/employe/login">rejoindre</a></li>
+
+            </ul>
+        </nav>
+        <div style="cursor: pointer;" class="jsnavbar" onclick="javascript:navbarevent()">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <div class="jsnavbar-content" style="position: absolute; height: 100%; left: 40%; top:100%; ">
+            <ul>
+                <li><a href="index.html">Homme</a></li>
+                <li><a href="#presentation-contact1">about</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li id="login">  <a   href="/employe/login">rejoindre</a></li>
+            </ul>
+        </div>
+ 
+    </header>
+
+    <div class="homme">
+        <div class="hommeimage">
+           @* <img src="~/Content/images/bghome.jpg" />*@
+
+            <img src="~/Content/images/realisationggh.png" />
+            <div class="context">
+
+                <h1>Bonjour tous le monde </h1>
+                <p>
+                    notre app est permet de faciliter processus de demande congé prolongé .
+                    <span style="color:red;"> faire un tours dans notre app prendre plaisir</span>
+                </p>
+                <button id="btncommencer"> Commencer </button>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody();
+
+    <style>
+        .Nos-choisit {
+            width: 100%;
+        }
+
+        .Nos-choisit-content {
+            background-color: rgb(232, 232, 232);
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+        }
+
+        .choisit .title {
+            font-size: 20px;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .choisit {
+            width: 400px;
+            padding: 20px;
+        }
+
+            .choisit .icon {
+                color: #2ecc71;
+                font-size: 100px;
+                align-items: center;
+            }
+
+        .Nos-choisit h1 {
+            text-align: center;
+            font-size: 40px;
+            text-transform: uppercase;
+            margin: 20px;
+        }
+    </style>
+    <div class="Nos-choisit">
+        <h1 class="h1title">Pourquoi <span> nous choisir ?</span>   </h1>
+        <div class="Nos-choisit-content">
+            <div class="choisi1 choisit">
+                <div class="icon">
+                    <ion-icon name="alarm"></ion-icon>
+                </div>
+                <div class="title">
+                    <h2> Garder le temps </h2>
+                </div>
+
+            </div>
+            <div class="choisi2 choisit">
+                <div class="icon">
+                    <ion-icon name="rocket"></ion-icon>
+                </div>
+                <div class="title">
+                    <h2> facile a executer  </h2>
+                </div>
+            </div>
+            <div class="choisi3 choisit">
+                <div class="icon">
+                    <ion-icon name="hammer"></ion-icon>
+                </div>
+                <div class="title">
+                    <h2> support 24/7  </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .presentation-contact {
+        }
+
+        .presentation {
+            position: absolute;
+            background-image: url('../../Content/images/presentation.jpg');
+            height: 300px;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            overflow: auto;
+        }
+
+        .presentation-contact {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        .presentation p {
+            width: 68%;
+            color: white;
+            font-size: 45px;
+        }
+
+        .presentation button {
+            width: 22%;
+            height: 50px;
+            background-color: white;
+            color: #2ecc71;
+            border: #2ecc71 2px solid;
+        }
+        /* .presentation div{background-color: rgba(0, 0, 0, 0.331);height: 100%; width: 100%;            } */
+    </style>
+    <div id="presentation-contact1" class="presentation-contact">
+        <DIv class="presentation">
+            <p>
+                Dans un monde en perpétuelle évolution où la transformation digitale est devenue l'enjeu de tous... <span>notre application</span> donne cette possibilite
+            </p>
+            
+
+        </DIv>
+    </div>
+    <style>
+        .contact {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+            .contact:after {
+                content: '';
+                /*position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;*/
+             /*background-image: url('../../Content/images/bg.jpg');*/
+            
+                /*background-size: cover;
+                filter: blur(50px);
+                z-index: -1;*/
+            }
+
+        .contact-box {
+            max-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #fff;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .field {
+            width: 80%;
+            border: 2px solid rgba(0, 0, 0, 0);
+            outline: none;
+            background-color: rgba(230, 230, 230, 0.6);
+            font-size: 1.1rem;
+            margin-bottom: 22px;
+            transition: 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        .left {
+            width: 40%;
+            background-color: rgba(0, 0, 0, 0.463);
+            z-index: 4;
+        }
+
+        .right h2 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        .right {
+            width: 700px;
+        }
+
+        .left img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .right button {
+            width: 80%;
+            padding: 0.5rem 1rem;
+            background-color: #2ecc71;
+            color: #fff;
+            font-size: 1.1rem;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        textarea {
+            min-height: 150px;
+        }
+    </style>
+    <div class="contact" id="contact">
+        <div class="contact-box">
+           
+            <div class="left">  <img src="~/Content/images/bg.jpg" /></div>
+            <div class="right">
+                <h2 class="h1title"> <span>Contact </span> Us</h2>
+                @using (Html.BeginForm("contact", "Principale", FormMethod.Post))
+                {
+                    <input name="name" type="text" class="field" placeholder="Your Name">
+                    <input name="Email" type="text" class="field" placeholder="Your Email">
+                    <input name="phone" type="text" class="field" placeholder="Phone">
+                    <textarea name="message" placeholder="Message" class="field"></textarea>
+                    <button type="submit" class="btn">Send</button>
+                }
+            </div>
+        </div>
+    </div>
+
+
+    <footer style="color: rgb(255, 255, 255);">
+        <div class="footerdesc">
+             
+            <img src="~/Content/images/logocongewhite.png" />/logocongewhite.png" alt="brand">
+
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, ratione provident veritatis nobis iste illum perferendis optio voluptatum minima sapiente cupiditate nihil similique ut! Illo necessitatibus ex at cum numquam!
+
+            </p>
+            <button id="btnmarque">laisse ta marque</button>
+        </div>
+        <div class="contactinformation">
+            <h1 style="margin-bottom: 10px;">Contact Information</h1>
+            <h3 style="margin-bottom: 10px;">phone</h3>
+            <p style="margin-bottom: 10px;"> +212 6.48.30.80.84</p>
+            <h3 style="margin-bottom: 10px;">Email</h3>
+            <p style="margin-bottom: 10px;">chatitabderrahmane@gmail.com</p>
+            <h3 style="margin-bottom: 10px;">Rejoignez-nous :</h3>
+            <a href=""> <ion-icon name="logo-instagram"></ion-icon></a>
+            <a href=""> <ion-icon name="logo-facebook"></ion-icon></a>
+            <a href=""> <ion-icon name="logo-github"></ion-icon></a>
+        </div>
+        <div class="lienrapide">
+            <h1 style="margin-bottom: 10px;">Lien Rapide</h1>
+
+            <ul>
+                <li><a href="#">Homme</a> </li>
+                <li><a href="/employe/login">demande congé</a> </li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="/employe/login"> sign in </a></li>
+                <li><a href="/admin/loginadmin">Admin</a></li>
+            </ul>
+        </div>
+
+    </footer>
+    <div class="realiserpar">
+        <p>© Copyright : Réalisé par  abderrahmane chatit  Edition @DateTime.Now.Year </p>
+    </div>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+    <!-- <script >
+        let toggle = document.querySelector("#toggle");
+        let navigation = document.querySelector(".navbar-menu");
+
+
+       toggle.onclick = function () {
+
+        navigation.classList.toggle("active");
+      }
+    </script> -->
+    <script src="~/Content/js/main.js"></script>
+ 
+</body>
+</html>

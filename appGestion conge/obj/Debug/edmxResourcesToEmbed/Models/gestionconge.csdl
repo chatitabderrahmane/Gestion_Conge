@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gestion_congeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="Noadmin" />
+    </Key>
+    <Property Name="Noadmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="passe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="conge">
+    <Key>
+      <PropertyRef Name="noconge" />
+    </Key>
+    <Property Name="noemployer" Type="Int32" />
+    <Property Name="noconge" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="duree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date_debut" Type="DateTime" Precision="0" />
+    <Property Name="date_fin" Type="DateTime" Precision="0" />
+    <Property Name="motif" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="etat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="employer" Relationship="Self.FK__conge__noemploye__3A81B327" FromRole="conge" ToRole="employer" />
+  </EntityType>
+  <EntityType Name="employer">
+    <Key>
+      <PropertyRef Name="noemployer" />
+    </Key>
+    <Property Name="noemployer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="datenaissance" Type="DateTime" Precision="0" />
+    <Property Name="grade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telephone" Type="Int32" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="motdepasse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="conges" Relationship="Self.FK__conge__noemploye__3A81B327" FromRole="employer" ToRole="conge" />
+  </EntityType>
+  <Association Name="FK__conge__noemploye__3A81B327">
+    <End Role="employer" Type="Self.employer" Multiplicity="0..1" />
+    <End Role="conge" Type="Self.conge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employer">
+        <PropertyRef Name="noemployer" />
+      </Principal>
+      <Dependent Role="conge">
+        <PropertyRef Name="noemployer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="gestion_congeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="admins" EntityType="Self.admin" />
+    <EntitySet Name="conges" EntityType="Self.conge" />
+    <EntitySet Name="employers" EntityType="Self.employer" />
+    <AssociationSet Name="FK__conge__noemploye__3A81B327" Association="Self.FK__conge__noemploye__3A81B327">
+      <End Role="employer" EntitySet="employers" />
+      <End Role="conge" EntitySet="conges" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

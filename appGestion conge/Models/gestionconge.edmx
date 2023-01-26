@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="gestion_congeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="Noadmin" />
+          </Key>
+          <Property Name="Noadmin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="20" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="20" />
+          <Property Name="username" Type="varchar" MaxLength="20" />
+          <Property Name="passe" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="conge">
+          <Key>
+            <PropertyRef Name="noconge" />
+          </Key>
+          <Property Name="noemployer" Type="int" />
+          <Property Name="noconge" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="duree" Type="varchar" MaxLength="50" />
+          <Property Name="date_debut" Type="date" />
+          <Property Name="date_fin" Type="date" />
+          <Property Name="motif" Type="varchar" MaxLength="100" />
+          <Property Name="etat" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="employer">
+          <Key>
+            <PropertyRef Name="noemployer" />
+          </Key>
+          <Property Name="noemployer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="20" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="20" />
+          <Property Name="datenaissance" Type="date" />
+          <Property Name="grade" Type="varchar" MaxLength="50" />
+          <Property Name="telephone" Type="int" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="motdepasse" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__conge__noemploye__3A81B327">
+          <End Role="employer" Type="Self.employer" Multiplicity="0..1" />
+          <End Role="conge" Type="Self.conge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="noemployer" />
+            </Principal>
+            <Dependent Role="conge">
+              <PropertyRef Name="noemployer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gestion_congeModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="conge" EntityType="Self.conge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employer" EntityType="Self.employer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__conge__noemploye__3A81B327" Association="Self.FK__conge__noemploye__3A81B327">
+            <End Role="employer" EntitySet="employer" />
+            <End Role="conge" EntitySet="conge" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gestion_congeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="Noadmin" />
+          </Key>
+          <Property Name="Noadmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="passe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="conge">
+          <Key>
+            <PropertyRef Name="noconge" />
+          </Key>
+          <Property Name="noemployer" Type="Int32" />
+          <Property Name="noconge" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="duree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date_debut" Type="DateTime" Precision="0" />
+          <Property Name="date_fin" Type="DateTime" Precision="0" />
+          <Property Name="motif" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="etat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="employer" Relationship="Self.FK__conge__noemploye__3A81B327" FromRole="conge" ToRole="employer" />
+        </EntityType>
+        <EntityType Name="employer">
+          <Key>
+            <PropertyRef Name="noemployer" />
+          </Key>
+          <Property Name="noemployer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="datenaissance" Type="DateTime" Precision="0" />
+          <Property Name="grade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telephone" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="motdepasse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="conges" Relationship="Self.FK__conge__noemploye__3A81B327" FromRole="employer" ToRole="conge" />
+        </EntityType>
+        <Association Name="FK__conge__noemploye__3A81B327">
+          <End Role="employer" Type="Self.employer" Multiplicity="0..1" />
+          <End Role="conge" Type="Self.conge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employer">
+              <PropertyRef Name="noemployer" />
+            </Principal>
+            <Dependent Role="conge">
+              <PropertyRef Name="noemployer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gestion_congeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="conges" EntityType="Self.conge" />
+          <EntitySet Name="employers" EntityType="Self.employer" />
+          <AssociationSet Name="FK__conge__noemploye__3A81B327" Association="Self.FK__conge__noemploye__3A81B327">
+            <End Role="employer" EntitySet="employers" />
+            <End Role="conge" EntitySet="conges" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gestion_congeModelStoreContainer" CdmEntityContainer="gestion_congeEntities">
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="gestion_congeModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="Noadmin" ColumnName="Noadmin" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="passe" ColumnName="passe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="conges">
+            <EntityTypeMapping TypeName="gestion_congeModel.conge">
+              <MappingFragment StoreEntitySet="conge">
+                <ScalarProperty Name="noemployer" ColumnName="noemployer" />
+                <ScalarProperty Name="noconge" ColumnName="noconge" />
+                <ScalarProperty Name="duree" ColumnName="duree" />
+                <ScalarProperty Name="date_debut" ColumnName="date_debut" />
+                <ScalarProperty Name="date_fin" ColumnName="date_fin" />
+                <ScalarProperty Name="motif" ColumnName="motif" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employers">
+            <EntityTypeMapping TypeName="gestion_congeModel.employer">
+              <MappingFragment StoreEntitySet="employer">
+                <ScalarProperty Name="noemployer" ColumnName="noemployer" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="datenaissance" ColumnName="datenaissance" />
+                <ScalarProperty Name="grade" ColumnName="grade" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="motdepasse" ColumnName="motdepasse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

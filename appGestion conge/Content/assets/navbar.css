@@ -1,0 +1,143 @@
+﻿
+span {
+    color: #2ecc71;
+}
+
+.jsnavbar-content ul {
+    display: block;
+}
+
+
+.jsnavbar-content {
+    display: none;
+}
+
+.jsnavbar {
+    display: none;
+}
+
+    .jsnavbar div {
+        width: 35px;
+        height: 3px;
+        background-color: white;
+        margin: 6px 0;
+        transition: 0.4s;
+        cursor: pointer;
+    }
+
+@media only screen and (max-width: 600px) {
+    .jsnavbar {
+        display: block;
+    }
+
+    #navbar-menu {
+        display: none;
+    }
+
+    .jsnavbar-contentx .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+        transform: rotate(-45deg) translate(-6px, 6px);
+    }
+
+    .jsnavbar-contentx .bar2 {
+        opacity: 0;
+    }
+
+    .jsnavbar-contentx {
+        display: block;
+    }
+
+        .jsnavbar-contentx .bar3 {
+            -webkit-transform: rotate(45deg) translate(-6px, -8px);
+            transform: rotate(45deg) translate(-6px, -8px);
+        }
+    /*.jsnavbar-content.jsnavbar-contentx{
+    display: block;
+ } */
+}
+
+header {
+    z-index: 7;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+header a {
+    text-decoration: none;
+}
+
+header {
+    padding: 0 20px;
+    background-color: #1d1f1d;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#brand {
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+    #brand a {
+        color: #09c372;
+    }
+
+a {
+    text-decoration: none;
+}
+
+
+
+
+
+header ul {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+    header ul a {
+        color: white;
+    }
+
+ul li {
+    padding: 5px;
+    margin-left: 10px;
+}
+
+header ul li:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+#login {
+    border-radius: 5px;
+    padding: 5px 8px;
+    border: 1px solid #498afb;
+}
+
+    #login a {
+        color: #498afb;
+    }
+
+@media only screen and (max-width: 600px) {
+    header nav {
+        display: none;
+    }
+
+    #brand {
+        margin: auto;
+        transition: 0.5s;
+    }
+}
